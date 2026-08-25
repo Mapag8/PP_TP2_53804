@@ -14,7 +14,7 @@ public class Main {
       copia1.mostrarDatos();
       copia2.mostrarDatos();
       //contador
-      System.out.println("Cantidad total de eventos: " + EventoUniversitario.getCantidadEventos());
+      System.out.println("Cantidad total de eventos:  " + EventoUniversitario.getCantidadEventos());
 
 
    }
