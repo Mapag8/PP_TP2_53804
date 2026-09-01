@@ -1,12 +1,12 @@
 public class Estudiante {
     //zona de atributos
-    private int legajo;
+    private String legajo;
     private String nombre;
 
 
     //zona de constructores
 
-    public Estudiante(String nombre, int legajo) {
+    public Estudiante(String nombre, String legajo) {
         this.nombre = nombre;
         this.legajo = legajo;
     }
@@ -20,11 +20,11 @@ public class Estudiante {
 
     //zona de getter and setters
 
-    public int getLegajo() {
+    public String getLegajo() {
         return legajo;
     }
 
-    public void setLegajo(int legajo) {
+    public void setLegajo(String legajo) {
         this.legajo = legajo;
     }
 

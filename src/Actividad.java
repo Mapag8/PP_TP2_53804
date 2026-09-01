@@ -1,18 +1,19 @@
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
-public class Actividad {
+public abstract class Actividad {
     //zona de atributos
     private int id;
     private String titulo;
     private int cupoMaximo;
     private List<Inscripcion> inscripciones;
     //constantes
-    public final int CUPO_MINIMO=5;
+    public static final int CUPO_MINIMO=5;
 
 
     //zona de constructores
 
-    public Actividad(int titulo, String id, int cupoMaximo) {
+    public Actividad(String titulo, int id, int cupoMaximo) {
         this.titulo = titulo;
         this.id = id;
         this.cupoMaximo = cupoMaximo;
@@ -23,7 +24,7 @@ public class Actividad {
     //zona de metodos
  public Inscripcion inscribir (Estudiante estudiante){
 if(this.inscripciones.size() < this.cupoMaximo){
-    Inscripcion nuevaInscripcion = new Inscripcion(estudiante);
+    Inscripcion nuevaInscripcion = new Inscripcion(LocalDate.now(), "REGISTRADA", estudiante);
     this.inscripciones.add(nuevaInscripcion);
     return nuevaInscripcion;
 } else{
@@ -45,6 +46,14 @@ if(this.inscripciones.size() < this.cupoMaximo){
                     " Fecha: " + ins.getFecha() +
                     " Estado: " + ins.getEstado());
         }
+    }
+
+    public abstract double calcularCostoMateriales();
+
+    public abstract String getTipo();
+
+    public final void mostrarIdentificacion() {
+        System.out.println("ID: " + id + " | Titulo: " + titulo + " | Tipo: " + getTipo());
     }
 
 

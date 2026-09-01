@@ -7,7 +7,7 @@ public class EventoUniversitario {
     private String titulo;
     private double costoBase;
     private boolean gratuito;
-    private static int contador =0;
+    private static int cantidadEventos =0;
 
 
 
@@ -22,31 +22,44 @@ public class EventoUniversitario {
         this.titulo = titulo;
         this.costoBase = costoBase;
         this.gratuito = gratuito;
-        contador ++;
+        this.actividades = new ArrayList<>();
+        cantidadEventos ++;
     }
     public EventoUniversitario(EventoUniversitario otro){
     this.id=otro.id + " copia";
     this.titulo= otro.titulo;
     this.costoBase = otro.costoBase;
     this.gratuito= otro.gratuito;
-    contador ++;
+    this.actividades = new ArrayList<>();
+    cantidadEventos ++;
     }
 
     //zona de metodos
     public double calcularCostoEstimado(){
         if (this.gratuito){
             return 0;
-        }else{
-            return this.costoBase;
         }
+        double costoActividades = 0;
+        for (Actividad actividad : this.actividades) {
+            costoActividades += actividad.calcularCostoMateriales();
+        }
+        return (this.costoBase + costoActividades) * 1.21;
     }
     public void asignarSala(Sala sala){
 
 this.sala=sala;
     }
 
-    public void crearActividad(int id, String titulo, int cupo) {
-        Actividad nuevaActividad = new Actividad(id,titulo,cupo);
+    public void crearActividad(String tipo, int id, String titulo, int cupo, String disertante, boolean requiereNotebook) {
+        Actividad nuevaActividad;
+        if (tipo.equals("Charla")) {
+            nuevaActividad = new Charla(titulo, id, cupo, disertante);
+        } else if (tipo.equals("Taller")) {
+            nuevaActividad = new Taller(titulo, id, cupo, requiereNotebook);
+        } else {
+            System.out.println("Tipo de actividad inválido: " + tipo);
+            return;
+        }
         this.actividades.add(nuevaActividad);
     }
 
@@ -57,11 +70,21 @@ this.sala=sala;
         System.out.println("Costo Base: " + this.costoBase);
         System.out.println("Gratuito: " + this.gratuito);
         System.out.println("Costo Estimado: "+ this.calcularCostoEstimado());
+        System.out.println("Sala: " + (this.sala != null ? this.sala.getNombre() + " (ID " + this.sala.getId() + ")" : "Sin sala asignada"));
+        System.out.println("Actividades:");
+        if (this.actividades.isEmpty()) {
+            System.out.println("  (Sin actividades)");
+        } else {
+            for (Actividad actividad : this.actividades) {
+                actividad.mostrarIdentificacion();
+                actividad.mostrarInscripciones();
+            }
+        }
         System.out.println("-----------------------------------");
     }
 
     public static int getCantidadEventos(){
-        return contador;
+        return cantidadEventos;
     }
 
 
@@ -84,6 +107,13 @@ this.sala=sala;
         return gratuito;
     }
 
+    public Sala getSala() {
+        return sala;
+    }
+
+    public List<Actividad> getActividades() {
+        return actividades;
+    }
 
 
 
