@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventoUniversitario {
     //zona de Atributos
     private final String id;
@@ -6,6 +9,12 @@ public class EventoUniversitario {
     private boolean gratuito;
     private static int contador =0;
 
+
+
+    //relaciones
+
+    private Sala sala;
+    private List<Actividad> actividades;
 
     //zona de constructores
     public EventoUniversitario(String id, String titulo, double costoBase, boolean gratuito) {
@@ -32,12 +41,13 @@ public class EventoUniversitario {
         }
     }
     public void asignarSala(Sala sala){
-        System.out.println("Funciona Asignar Sala"); //solo para testear
+
+this.sala=sala;
     }
 
-    public void crearActividad (int id, String titulo, int cupo ){
-        System.out.println("Funciona crear actividad"); //solo para testear
-
+    public void crearActividad(int id, String titulo, int cupo) {
+        Actividad nuevaActividad = new Actividad(id,titulo,cupo);
+        this.actividades.add(nuevaActividad);
     }
 
     public void mostrarDatos(){

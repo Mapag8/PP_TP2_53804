@@ -12,7 +12,7 @@ public class Actividad {
 
     //zona de constructores
 
-    public Actividad(String titulo, int id, int cupoMaximo) {
+    public Actividad(int titulo, String id, int cupoMaximo) {
         this.titulo = titulo;
         this.id = id;
         this.cupoMaximo = cupoMaximo;
@@ -21,7 +21,31 @@ public class Actividad {
 
 
     //zona de metodos
+ public Inscripcion inscribir (Estudiante estudiante){
+if(this.inscripciones.size() < this.cupoMaximo){
+    Inscripcion nuevaInscripcion = new Inscripcion(estudiante);
+    this.inscripciones.add(nuevaInscripcion);
+    return nuevaInscripcion;
+} else{
+    System.out.println("Cupos Llenos");
+    return null;
+}
+ }
 
+
+ public void mostrarInscripciones(){
+        System.out.println("Inscripciones para: " + this.titulo);
+        if (this.inscripciones.isEmpty()) {  //vemos si esta vacio
+            System.out.println("  (Sin inscriptos)");
+            return;
+        }
+        for (Inscripcion ins : this.inscripciones) {
+            System.out.println(ins.getEstudiante().getNombre() +
+                    " Legajo: " + ins.getEstudiante().getLegajo() +
+                    " Fecha: " + ins.getFecha() +
+                    " Estado: " + ins.getEstado());
+        }
+    }
 
 
 
