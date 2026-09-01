@@ -1,13 +1,16 @@
-public class Sala {
+public class Estudiante {
     //zona de atributos
-    private int id;
+    private int legajo;
     private String nombre;
 
+
     //zona de constructores
-    public Sala(String nombre, int id) {
+
+    public Estudiante(String nombre, int legajo) {
         this.nombre = nombre;
-        this.id = id;
+        this.legajo = legajo;
     }
+
 
     //zona de metodos
 
@@ -17,6 +20,13 @@ public class Sala {
 
     //zona de getter and setters
 
+    public int getLegajo() {
+        return legajo;
+    }
+
+    public void setLegajo(int legajo) {
+        this.legajo = legajo;
+    }
 
     public String getNombre() {
         return nombre;
@@ -24,13 +34,5 @@ public class Sala {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

@@ -5,7 +5,6 @@ public class EventoUniversitario {
     private double costoBase;
     private boolean gratuito;
     private static int contador =0;
-    private double costo;
 
 
     //zona de constructores
@@ -75,17 +74,10 @@ public class EventoUniversitario {
         return gratuito;
     }
 
-    public static int getContador() {
-        return contador;
-    }
 
 
 
 
-
-    public static void setContador(int contador) {
-        EventoUniversitario.contador = contador;
-    }
 
     public void setGratuito(boolean gratuito) {
         this.gratuito = gratuito;
