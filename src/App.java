@@ -18,9 +18,7 @@ public class App {
       System.out.println("Cantidad total de eventos:  " + EventoUniversitario.getCantidadEventos());
 
       System.out.println();
-      System.out.println("==============================");
-      System.out.println("          EJERCICIO 2");
-      System.out.println("==============================");
+      System.out.println("Resumen de los eventos con actividades e inscripciones:");
       System.out.println();
 
       //a. construir una lista de estudiantes
