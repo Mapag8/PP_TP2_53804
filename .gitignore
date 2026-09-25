@@ -1,3 +1,7 @@
+### Persistencia ###
+*.dat
+*.ser
+
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/

@@ -1,31 +1,30 @@
-public class Estudiante {
+package modelo;
+
+import java.io.Serializable;
+
+public class Estudiante implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     //zona de atributos
     private String legajo;
     private String nombre;
 
-
     //zona de constructores
-
-    public Estudiante(String nombre, String legajo) {
-        this.nombre = nombre;
+    public Estudiante(String legajo, String nombre) {
         this.legajo = legajo;
+        this.nombre = nombre;
     }
-
 
     //zona de metodos
-
-
-
-
-
-    //zona de getter and setters
-
-    public String getLegajo() {
-        return legajo;
+    @Override
+    public String toString() {
+        return nombre + " (legajo " + legajo + ")";
     }
 
-    public void setLegajo(String legajo) {
-        this.legajo = legajo;
+    //zona de getter and setters
+    public String getLegajo() {
+        return legajo;
     }
 
     public String getNombre() {
